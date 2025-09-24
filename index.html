@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thorpe Astley Pharmacy — Modern Redesign</title>
+<meta name="description" content="Thorpe Astley Pharmacy — book vaccines, prescriptions & consultations. Friendly local NHS & private services.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* =======================
+     Variables & base
+     ======================= */
+  :root{
+    --bg: #F5F9FF;
+    --card: rgba(255,255,255,0.75);
+    --glass: rgba(255,255,255,0.35);
+    --primary: #0066CC;
+    --accent: linear-gradient(90deg,#0066CC,#00CC99);
+    --accent-solid: #00CC99;
+    --muted: #333;
+    --radius: 16px;
+    --maxw: 1280px;
+    --gap: 1.25rem;
+    --elev: 0 10px 30px rgba(10,30,60,0.08);
+    --shadow-strong: 0 12px 30px rgba(6,45,120,0.12);
+    --glass-border: rgba(255,255,255,0.6);
+    --text-light: #ffffff;
+  }
+  [data-theme="dark"]{
+    --bg:#071233;
+    --card: rgba(8,14,28,0.55);
+    --glass: rgba(255,255,255,0.03);
+    --muted:#E6EEF9;
+    --text-light:#E6EEF9;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--muted);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    :root{scroll-behavior:auto;}
+    *{transition:none!important;animation:none!important;}
+  }
+
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 1rem;}
+
+  /* =======================
+     Header / Nav
+     ======================= */
+  header{
+    position:sticky;top:0;z-index:60;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.35));
+    border-bottom: 1px solid rgba(10,20,40,0.04);
+  }
+  [data-theme="dark"] header{
+    background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.8rem;font-weight:700;font-size:1.15rem;color:var(--primary)}
+  .brand .sub{font-weight:400;font-size:.9rem;color:var(--muted)}
+
+  nav.primary{display:flex;gap:.4rem;align-items:center}
+  nav.primary a{display:inline-block;padding:.6rem .8rem;border-radius:10px;color:var(--muted);font-weight:600}
+  nav.primary a.active, nav.primary a:hover{background:rgba(0,0,0,0.04);color:var(--primary)}
+  .cta-row{display:flex;gap:.6rem;align-items:center}
+
+  /* Hamburger for mobile */
+  .hamburger{display:none;background:transparent;border:0;padding:.5rem;border-radius:10px}
+  .hamburger svg{width:22px;height:22px;color:var(--muted)}
+
+  /* dark toggle */
+  .toggle{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem;border-radius:999px;background:transparent;border:0;cursor:pointer}
+  .dot{width:18px;height:18px;border-radius:50%;background:var(--primary);box-shadow:var(--elev)}
+
+  /* =======================
+     Hero (video background + overlay)
+     ======================= */
+  .hero{
+    position:relative;min-height:72vh;display:flex;align-items:center;
+    border-radius:0 0 var(--radius) var(--radius);overflow:hidden;margin-bottom:clamp(1rem,3vw,2.5rem);
+  }
+  .hero video{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(.9) saturate(.95);
+    transform:scale(1.03);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(4,23,54,0.35), rgba(4,23,54,0.25));mix-blend-mode:multiply;
+  }
+  .hero .content{
+    position:relative;z-index:2;width:100%;padding:3.25rem 1rem;display:flex;align-items:center;
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:center;max-width:var(--maxw);margin:0 auto;width:100%}
+  .hero-left h1{font-family:Poppins, sans-serif;font-size:clamp(1.6rem,3.6vw,2.8rem);color:var(--text-light);margin:0 0 .5rem 0;line-height:1.05}
+  .hero-left p{color:rgba(230,238,249,0.9);margin:0 0 1rem 0;font-size:1rem;max-width:55ch}
+  .hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap}
+  .btn{border:0;padding:.75rem 1.1rem;border-radius:12px;font-weight:700;cursor:pointer}
+  .btn.primary{background:var(--primary);color:white;box-shadow:var(--shadow-strong)}
+  .btn.ghost{background:transparent;color:var(--text-light);border:1px solid rgba(255,255,255,0.14)}
+
+  .hero-right{display:flex;flex-direction:column;gap:.8rem}
+  .contact-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border-radius:12px;padding:1rem;border:1px solid rgba(255,255,255,0.06);
+    color:var(--text-light);backdrop-filter: blur(6px);
+  }
+
+
+/* =======================
+     Advanced services
+     ======================= */
+.advanced-grid{
+  display:grid;
+  gap:1.25rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  margin-top:1rem;
+}
+
+.adv-service{
+  background:var(--glass);
+  border-radius:14px;
+  padding:1.5rem;
+  color:var(--muted);
+  box-shadow:var(--elev);
+  border:1px solid var(--glass-border);
+  transition:transform .28s ease, box-shadow .28s ease;
+}
+
+.adv-service:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 18px 40px rgba(6,45,120,0.14);
+}
+
+.adv-service h3{
+  margin:0 0 .5rem 0;
+  font-size:1.2rem;
+  color:var(--primary);
+}
+
+.adv-service p{
+  font-size:.95rem;
+  line-height:1.45;
+  margin-bottom:1rem;
+  color:var(--muted);
+}
+
+.adv-links{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+
+.adv-links .btn{
+  padding:.6rem 1rem;
+  font-weight:600;
+}
+
+/* horizontal scroll on mobile */
+@media (max-width:768px){
+  .advanced-grid{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:1rem;
+  }
+  .adv-service{
+    flex:0 0 85%; /* almost full width per card */
+    scroll-snap-align:start;
+    margin-right:1rem;
+  }
+}
+
+
+
+
+  /* =======================
+     Trust / testimonials
+     ======================= */
+  .trust{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;padding:1.25rem 0;margin-bottom:1rem}
+  .trust .pill{padding:.5rem 1rem;border-radius:999px;background:linear-gradient(90deg,#fff,#f6fbff);font-weight:700;color:var(--primary);box-shadow:0 6px 18px rgba(4,20,60,0.04)}
+  .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;padding:1rem 0}
+  .testimonial{background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--elev);font-style:italic;color:var(--muted)}
+  .testimonial strong{display:block;margin-bottom:.5rem;color:var(--primary)}
+
+  /* =======================
+     About/Contact/Map
+     ======================= */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;padding:2rem 0}
+  .map iframe{width:100%;height:260px;border-radius:12px;border:0}
+
+  /* =======================
+     Footer
+     ======================= */
+  footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.95rem;border-top:1px solid rgba(10,20,40,0.03)}
+
+  /* =======================
+     Modal / Booking
+     ======================= */
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,10,20,0.45);z-index:120}
+  .modal[open]{display:flex}
+  .modal-panel{background:var(--card);padding:1.25rem;border-radius:12px;max-width:520px;width:94%;box-shadow:var(--shadow-strong)}
+  .form-row{display:flex;gap:.5rem}
+  .form-row input,.form-row select,.form-row textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)}
+  .close-x{background:transparent;border:0;position:absolute;top:12px;right:14px;font-size:1.25rem;color:var(--muted);cursor:pointer}
+
+  /* =======================
+     Responsive tweaks
+     ======================= */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr; padding:2rem 0}
+    .hero-right{order:2}
+    .hero-left{order:1}
+    nav.primary{display:none}
+    .hamburger{display:inline-flex}
+  }
+  @media (max-width:520px){
+    .hero{min-height:60vh}
+    .brand{font-size:1rem}
+    .hero-left h1{font-size:1.5rem}
+    .split{grid-template-columns:1fr}
+    .testimonial{font-size:.95rem}
+  }
+</style>
+</head>
+<body>
+
+<header role="banner">
+  <div class="container topbar" role="navigation" aria-label="Top Navigation">
+    <div class="brand" aria-hidden="false">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <rect x="2" y="2" width="20" height="20" rx="4" fill="#0066CC"/>
+        <path d="M7 12h10" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M12 7v10" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div>
+        Thorpe Astley <div class="sub">Pharmacy</div>
+      </div>
+    </div>
+
+    <nav class="primary" aria-label="Primary">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#advanced-services" class="nav-link">Services</a>
+      <a href="#book" class="nav-link" id="openModal">Book</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="cta-row">
+      <button class="toggle" id="themeToggle" aria-pressed="false" title="Toggle dark mode">
+        <span style="font-size:.85rem;color:var(--muted)">Theme</span>
+        <span class="dot" aria-hidden="true"></span>
+      </button>
+
+      <button class="btn primary" id="openModalBtn" aria-controls="bookingModal">Book</button>
+
+      <button class="hamburger" id="hambtn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.6" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO: video background -->
+<section id="home" class="hero" aria-label="Welcome section">
+  <video autoplay muted loop playsinline poster="images/hero-poster.jpg" id="heroVideo">
+    <source src="photo1.jpg" >
+    <!-- fallback image -->
+  </video>
+
+  <div class="content">
+    <div class="hero-grid container">
+      <div class="hero-left">
+        <h1>Pharmacy care that feels local — and professional.</h1>
+        <p>Walk in or book online for vaccines, travel clinic, prescriptions and private consultations. Fast, friendly, and NHS-registered.</p>
+        <div class="hero-ctas">
+          <button class="btn primary" id="openModalBtn2">Book appointment</button>
+          <a class="btn ghost" href="#services">Explore services</a>
+        </div>
+      </div>
+
+      <aside class="hero-right" aria-hidden="false">
+        <div class="contact-card" role="region" aria-label="Contact and opening hours">
+          <strong style="color:var(--text-light)">Opening hours</strong>
+          <div style="color:rgba(255,255,255,0.95);margin:.4rem 0 0 0">Mon–Fri: 9:00–18:00<br/>Sat: 9:00–13:00 · Sun: Closed</div>
+          <hr style="opacity:.08;margin:.7rem 0">
+          <div style="font-weight:700;color:var(--text-light)">Call</div>
+          <a href="tel:+441234567890" style="color:var(--text-light);font-weight:600">01234 567 890</a>
+          <div style="margin-top:.6rem;color:rgba(255,255,255,0.9)">1 Example Rd, Thorpe Astley, LE3 3XX</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<!-- Advanced Services -->
+<section id="advanced-services" class="services container" aria-labelledby="advanced-title">
+  <h2 id="advanced-title" style="margin:0 0 1rem 0;font-family:Poppins;text-align: center;">Advanced Services</h2>
+
+  <div class="advanced-grid">
+    <!-- Travel Clinic -->
+    <article class="glass adv-service" aria-labelledby="adv1">
+      <h3 id="adv1">Travel Clinic</h3>
+      <p>Planning a trip abroad? Ensure a safe and healthy journey with our Private Travel Vaccination Clinic. Our experienced pharmacists offer personalised consultations, expert travel health advice, and administer all necessary vaccinations, including antimalarials. Book your appointment online today and embark on your travels with confidence and peace of mind.</p>
+      <div class="adv-links">
+        <a href="#" class="btn primary">Book Appointment</a>
+        <a href="#" class="btn ghost">Visit Here</a>
+      </div>
+    </article>
+
+    <!-- Private Covid -->
+    <article class="glass adv-service" aria-labelledby="adv2">
+      <h3 id="adv2">Private Covid</h3>
+      <p>Protect yourself and your loved ones—get vaccinated against COVID-19 today! If eligible for a free NHS vaccine, visit Thorpe Astley Pharmacy for your dose. Prices vary based on vaccine availability. For details about the vaccine types we offer, feel free to call and speak with our team.</p>
+      <div class="adv-links">
+        <a href="#" class="btn primary">Book Appointment</a>
+        <a href="#" class="btn ghost">Learn More</a>
+      </div>
+    </article>
+
+    <!-- Weight Management -->
+    <article class="glass adv-service" aria-labelledby="adv3">
+      <h3 id="adv3">Weight Management</h3>
+      <p>Being overweight can affect your health and confidence. Our pharmacists and weight loss experts help you create a personalised plan, develop an action plan, and support you to reach your goals. Book a consultation online today!</p>
+      <div class="adv-links">
+        <a href="#" class="btn primary">Book Appointment</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<!-- Trust -->
+<section class="trust container" aria-hidden="false">
+  <div class="pill-row" style="display:flex;gap:.6rem;justify-content:center;width:100%">
+    <div class="pill" style="padding:.5rem 1rem;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent-solid));color:white;font-weight:700">NHS Registered</div>
+    <div class="trust-pill pill">Friendly local team</div>
+    <div class="trust-pill pill">Same-day appointments</div>
+    <div class="trust-pill pill">Consultation room</div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section aria-label="Testimonials" class="container">
+  <h2 style="font-family:Poppins;margin-bottom:.6rem">What people say</h2>
+  <div class="testimonials" id="testimonialList">
+    <div class="testimonial" data-index="0">"Saved me a trip to the GP — brilliant service!" <strong>— Jane D</strong></div>
+    <div class="testimonial" data-index="1">"Quick and friendly. Booked my travel vaccines here." <strong>— Mohammed K</strong></div>
+    <div class="testimonial" data-index="2">"Staff are helpful and professional. Highly recommend." <strong>— Priya S</strong></div>
+  </div>
+</section>
+
+<!-- About + Contact -->
+<section id="about" class="container split" aria-labelledby="about-title">
+  <div>
+    <h3 id="about-title">Meet the team</h3>
+    <p style="color:var(--muted)">Our pharmacists are fully qualified and here to support you with clinical advice, medicines management and private services.</p>
+    <p style="margin-top:.75rem"><a href="#contact" class="btn" style="background:transparent;border:1px solid var(--primary);color:var(--primary)">Get directions</a></p>
+  </div>
+
+  <div id="contact" aria-label="Find us">
+    <h3>Find us</h3>
+    <p style="color:var(--muted)">1 Example Rd, Thorpe Astley — parking nearby.</p>
+    <div class="map" style="margin-top:.6rem">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.555049659378!2d-1.258332684131812!3d52.63269437980986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877f0ee7e5dbb3f%3A0x4c7b3b5c3d3c4cf9!2sLeicester!5e0!3m2!1sen!2suk!4v1695440000000!5m2!1sen!2suk"
+        style="border:0;width:100%;height:220px;border-radius:12px;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Booking modal -->
+<div id="bookingModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" tabindex="-1">
+  <div class="modal-panel" role="document">
+    <button class="close-x" id="closeModal" aria-label="Close booking modal">&times;</button>
+    <h3 id="bookingTitle">Book an appointment</h3>
+    <form id="bookingForm" onsubmit="return false">
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <input aria-label="Full name" id="bname" placeholder="Full name" required style="flex:1;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
+        <input aria-label="Phone or email" id="bcontact" placeholder="Phone or email" required style="flex:1;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
+      </div>
+      <div style="margin-top:.6rem">
+        <select id="bservice" aria-label="Service" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
+          <option>Flu Vaccine</option><option>Travel Clinic</option><option>Prescriptions</option><option>Health Check</option>
+        </select>
+      </div>
+      <div style="margin-top:.6rem;display:flex;gap:.6rem">
+        <input type="date" id="bdate" aria-label="Preferred date" required style="padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
+        <input type="time" id="btime" aria-label="Preferred time" style="padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
+      </div>
+
+      <div style="margin-top:.8rem;display:flex;gap:.6rem;justify-content:flex-end">
+        <button type="button" class="btn" id="cancelBooking">Cancel</button>
+        <button type="submit" class="btn primary" id="confirmBooking">Request booking</button>
+      </div>
+
+      <div id="bookingMsg" role="status" style="display:none;margin-top:.6rem;color:var(--primary);font-weight:700">✅ Request received — we'll contact you shortly.</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
+      <div style="font-weight:700;color:var(--primary)">Thorpe Astley Pharmacy</div>
+      <div style="color:var(--muted)">© <span id="year"></span> • Privacy • Terms • NHS info</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ===== helper/query ===== */
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  /* ===== theme toggle (persist) ===== */
+  const themeToggle = $('#themeToggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('ta-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if(saved === 'dark') root.setAttribute('data-theme','dark');
+  themeToggle.addEventListener('click', () => {
+    const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', cur === 'dark' ? 'dark' : '');
+    localStorage.setItem('ta-theme', cur);
+  });
+
+  /* ===== mobile nav toggle ===== */
+  const hambtn = $('#hambtn');
+  const navPrimary = $('.primary');
+  hambtn.addEventListener('click', () => {
+    const open = hambtn.getAttribute('aria-expanded') === 'true';
+    hambtn.setAttribute('aria-expanded', String(!open));
+    navPrimary.style.display = open ? 'none' : 'flex';
+  });
+
+  /* ===== open modal / booking logic (accessible) ===== */
+  const bookingModal = $('#bookingModal');
+  const openBtns = [$('#openModal'), $('#openModalBtn'), $('#openModalBtn2')].filter(Boolean);
+  openBtns.forEach(b => b.addEventListener('click', (e) => {
+    e.preventDefault();
+    openBooking();
+  }));
+  $('#closeModal').addEventListener('click', closeBooking);
+  $('#cancelBooking').addEventListener('click', closeBooking);
+
+  function openBooking(){
+    bookingModal.setAttribute('open','');
+    bookingModal.style.display = 'flex';
+    bookingModal.querySelector('#bname').focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBooking(){
+    bookingModal.removeAttribute('open');
+    bookingModal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  /* close on Esc */
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && bookingModal.style.display === 'flex') closeBooking();
+  });
+
+  /* Booking submit (mock) */
+  const bookingForm = $('#bookingForm');
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    $('#confirmBooking').disabled = true;
+    // show confirmation UI (mock behaviour)
+    setTimeout(() => {
+      $('#bookingMsg').style.display = 'block';
+      bookingForm.style.display = 'none';
+      setTimeout(closeBooking, 1800);
+    }, 700);
+  });
+
+  /* ===== hero video fallback: pause on reduced-motion ===== */
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const vid = document.querySelector('.hero video');
+    if(vid) { vid.pause(); vid.removeAttribute('autoplay'); }
+  }
+
+  /* ===== testimonials reveal + carousel auto (simple) ===== */
+  const testEls = $$('.testimonial');
+  let tIdx = 0;
+  function showTestimonials(){
+    testEls.forEach((el,i) => el.classList.toggle('visible', i === tIdx));
+    tIdx = (tIdx + 1) % testEls.length;
+  }
+  showTestimonials();
+  setInterval(showTestimonials, 4200);
+
+  /* reveal on scroll */
+  function revealOnScroll(){
+    $$('.glass, .testimonial').forEach(el=>{
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.85) el.classList.add('visible');
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+
+  /* ===== hero autoplay slider fallback (if multiple slides later) - placeholder ===== */
+  /* (we have single video hero — no slider required) */
+
+  /* ===== scrollspy ===== */
+  const sectionNodes = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  function onScrollSpy(){
+    const y = window.scrollY;
+    let current = sectionNodes.find(sec => sec.offsetTop - 120 <= y);
+    if(!current) current = sectionNodes[0];
+    const id = current.id;
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+  window.addEventListener('scroll', onScrollSpy);
+  window.addEventListener('load', onScrollSpy);
+
+  /* ===== set year ===== */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ===== lazy load images if IntersectionObserver available (progressive) ===== */
+  if('IntersectionObserver' in window){
+    const lazyImgs = Array.from(document.querySelectorAll('img[loading="lazy"], img:not([loading])'));
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const img = entry.target;
+          if(img.dataset.src) img.src = img.dataset.src;
+          obs.unobserve(img);
+        }
+      });
+    }, {rootMargin: '200px'});
+    lazyImgs.forEach(img => io.observe(img));
+  }
+
+
+  // ===== Advanced Services swipe (mobile only) =====
+  if(window.innerWidth <= 768){
+    const advGrid = document.querySelector('.advanced-grid');
+    let isDown = false, startX, scrollLeft;
+
+    advGrid.addEventListener('mousedown', e => {
+      isDown = true;
+      startX = e.pageX - advGrid.offsetLeft;
+      scrollLeft = advGrid.scrollLeft;
+    });
+    advGrid.addEventListener('mouseleave', () => isDown = false);
+    advGrid.addEventListener('mouseup', () => isDown = false);
+    advGrid.addEventListener('mousemove', e => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - advGrid.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      advGrid.scrollLeft = scrollLeft - walk;
+    });
+
+    // touch events
+    advGrid.addEventListener('touchstart', e => {
+      startX = e.touches[0].pageX - advGrid.offsetLeft;
+      scrollLeft = advGrid.scrollLeft;
+    });
+    advGrid.addEventListener('touchmove', e => {
+      const x = e.touches[0].pageX - advGrid.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      advGrid.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+</script>
+</body>
+</html>
