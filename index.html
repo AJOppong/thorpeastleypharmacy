@@ -294,7 +294,6 @@
     <nav class="primary" aria-label="Primary">
       <a href="#home" class="nav-link">Home</a>
       <a href="#advanced-services" class="nav-link">Services</a>
-      <a href="#book" class="nav-link" id="openModal">Book</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -359,6 +358,16 @@
       background: none;
       border: none;
       cursor: pointer;
+    }
+    /* Remove underline from header nav links */
+    .primary .nav-link,
+    .mobile-menu .nav-link {
+      text-decoration: none;
+    }
+
+    .primary .nav-link:hover,
+    .mobile-menu .nav-link:hover {
+      text-decoration: underline; /* optional subtle hover underline */
     }
 
     /* Smaller font for primary nav on mobile */
@@ -438,7 +447,7 @@
       <h3 id="adv1">Travel Clinic</h3>
       <p>Planning a trip abroad? Ensure a safe and healthy journey with our Private Travel Vaccination Clinic. Our experienced pharmacists offer personalised consultations, expert travel health advice, and administer all necessary vaccinations, including antimalarials. Book your appointment online today and embark on your travels with confidence and peace of mind.</p>
       <div class="adv-links">
-        <a href="#" class="btn primary">Book Appointment</a>
+        <a href="#services" class="btn primary scroll-book">Book Appointment</a>
         <a href="#" class="btn ghost">Visit Here</a>
       </div>
     </article>
@@ -448,7 +457,7 @@
       <h3 id="adv2">Private Covid</h3>
       <p>Protect yourself and your loved ones—get vaccinated against COVID-19 today! If eligible for a free NHS vaccine, visit Thorpe Astley Pharmacy for your dose. Prices vary based on vaccine availability. For details about the vaccine types we offer, feel free to call and speak with our team.</p>
       <div class="adv-links">
-        <a href="#" class="btn primary">Book Appointment</a>
+        <a href="#services" class="btn primary scroll-book">Book Appointment</a>
         <a href="#" class="btn ghost">Learn More</a>
       </div>
     </article>
@@ -458,7 +467,7 @@
       <h3 id="adv3">Weight Management</h3>
       <p>Being overweight can affect your health and confidence. Our pharmacists and weight loss experts help you create a personalised plan, develop an action plan, and support you to reach your goals. Book a consultation online today!</p>
       <div class="adv-links">
-        <a href="#" class="btn primary">Book Appointment</a>
+        <a href="#services" class="btn primary scroll-book">Book Appointment</a>
       </div>
     </article>
   </div>
@@ -521,119 +530,213 @@
 <!-- Services Section -->
 <section id="services" class="services container">
   <h2 style="text-align:center;margin-bottom:1rem;">Our Services</h2>
-  <ul style="list-style:none;padding:0;max-width:800px;margin:0 auto;">
-    
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+  <ul>
+    <li>
       <div>
         <strong>Private Independent Prescribing</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Our pharmacists can assess and prescribe treatments without needing a GP appointment.</p>
+        <p>Our pharmacists can assess and prescribe treatments without needing a GP appointment.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Emergency Hormonal Contraception</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Quick, confidential advice and treatment; free for 16–25-year-olds.</p>
+        <p>Quick, confidential advice and treatment; free for 16–25-year-olds.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>NHS Flu Vaccinations</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Protect yourself against flu. Walk-in or book your NHS vaccination today.</p>
+        <p>Protect yourself against flu. Walk-in or book your NHS vaccination today.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Erectile Dysfunction</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Private consultations and medications like Viagra or Cialis; safe and confidential.</p>
+        <p>Private consultations and medications like Viagra or Cialis; safe and confidential.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Malaria Prevention Service</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Advice and antimalarial tablets for travel; choose in-store or online options.</p>
+        <p>Advice and antimalarial tablets for travel; choose in-store or online options.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Period Delay</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Norethisterone tablets to delay periods for personal reasons; clinical support available.</p>
+        <p>Norethisterone tablets to delay periods for personal reasons; clinical support available.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Sexual Health Services</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Emergency contraception, STI screening, confidential sexual health support.</p>
+        <p>Emergency contraception, STI screening, confidential sexual health support.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Acne Treatment</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Prescription-strength treatments and over-the-counter options available after consultation.</p>
+        <p>Prescription-strength treatments and over-the-counter options available after consultation.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Blood Pressure Screening</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Check your blood pressure and get advice on managing hypertension in a private consultation.</p>
+        <p>Check your blood pressure and get advice on managing hypertension in a private consultation.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
 
-    <li style="margin-bottom:1rem;padding:0.75rem 1rem;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">
+    <li>
       <div>
         <strong>Minor Ailments</strong>
-        <p style="margin:0;font-size:0.9rem;color:#555;">Treatment for common issues like back pain, migraines, ear infections, IBS, etc.</p>
+        <p>Treatment for common issues like back pain, migraines, ear infections, IBS, etc.</p>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div>
         <a href="#" class="btn">Book</a>
         <a href="#" class="btn secondary">Learn More</a>
       </div>
     </li>
-
   </ul>
+
+  <!-- Service Description Modal -->
+  <div id="serviceModal">
+    <div>
+      <button id="closeServiceModal">&times;</button>
+      <h2 id="serviceModalTitle"></h2>
+      <div id="serviceModalText" style="white-space:pre-wrap;"></div>
+    </div>
+  </div>
+   <!-- Booking Modal -->
+  <div id="bookingModal">
+    <div>
+      <button id="closeBookingModal">&times;</button>
+      <h2>Select a Date and Time</h2>
+      <p>Select a date for your appointment:</p>
+      <input type="date" id="appointmentDate">
+      <input type="time" id="appointmentTime" min="10:00" max="18:00">
+      <div class="booking-actions">
+        <button id="cancelBooking" class="btn secondary">Cancel</button>
+        <button id="confirmBookingDateTime" class="btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Form Modal -->
+  <div id="bookingFormModal">
+    <div>
+      <button id="closeBookingFormModal">&times;</button>
+      <h2>Tell us your details</h2>
+      <p>We need this information to identify you</p>
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="Type Here" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Type Here" required>
+        </div>
+        <p>Date Of Birth</p>
+        <div class="dob-group">
+          <input type="number" id="dobDay" placeholder="Day" min="1" max="31" required>
+          <input type="number" id="dobMonth" placeholder="Month" min="1" max="12" required>
+          <input type="number" id="dobYear" placeholder="Year" min="1900" max="2025" required>
+        </div>
+        <p>Your contact details</p>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Type Here" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Mobile Phone</label>
+          <input type="tel" id="phone" placeholder="Type Here" required>
+        </div>
+        <p>Extra info</p>
+        <div class="form-group">
+          <label for="appointmentTimeDisplay">Time</label>
+          <input type="text" id="appointmentTimeDisplay" readonly>
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments (optional)</label>
+          <textarea id="comments" placeholder="Type Here"></textarea>
+        </div>
+        <div class="form-group privacy">
+          <label><input type="checkbox" required> I accept the privacy policy</label>
+          <label><input type="checkbox"> I would like to receive marketing messages</label>
+        </div>
+        <button type="submit" class="btn">Complete Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Booking Summary Modal -->
+  <div id="bookingSummaryModal">
+    <div>
+      <button id="closeBookingSummaryModal">&times;</button>
+      <h2>Booking Summary</h2>
+      <div class="summary-content">
+        <p><strong>Location:</strong> Thorpe Astley Pharmacy | Services, 3 Lakin Dr, Thorpe Astley, Leicester LE3 3RU, United Kingdom</p>
+        <p><strong>Service:</strong> <span id="summaryService"></span></p>
+        <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+        <p><strong>Time:</strong> <span id="summaryTime"></span></p>
+        <p><strong>Name:</strong> <span id="summaryName"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="summaryDOB"></span></p>
+        <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="summaryPhone"></span></p>
+        <p><strong>Comments:</strong> <span id="summaryComments">None</span></p>
+      </div>
+      <div class="summary-buttons">
+        <button id="editBooking" class="btn">Edit</button>
+        <button id="exitBooking" class="btn secondary">Exit</button>
+        <button id="confirmBookingSummary" class="btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
   <style>
 /* Container & List */
 .services.container {
@@ -723,8 +826,391 @@
     justify-content: flex-start;
   }
 }
+
+/* Darkened overlay with modern vibe */
+#serviceModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.75); /* darker overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#serviceModal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* Modal box with subtle lines & shadow */
+#serviceModal > div {
+  background: linear-gradient(135deg, #4a90e2, #50e3c2);
+  color: white;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* subtle diagonal lines for texture */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+/* Animate modal entry */
+#serviceModal.show > div {
+  transform: translateY(0);
+}
+
+/* Close button with hover */
+#closeServiceModal {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 1.8rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+#closeServiceModal:hover {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  #serviceModal > div {
+    padding: 1.5rem;
+    width: 95%;
+    max-height: 90%;
+    border-radius: 10px;
+  }
+}
+
+  /* Booking Modal overlay */
+#bookingModal {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6); /* subtle dark overlay */
+  justify-content:center;
+  align-items:center;
+  z-index:1001;
+  padding:1rem;
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
+
+#bookingModal.show {
+  display:flex;
+  opacity:1;
+}
+
+/* Modal box using your theme */
+#bookingModal > div {
+  background: var(--card); /* translucent card background */
+  color: var(--muted);
+  max-width:400px;
+  width:100%;
+  padding:2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--elev);
+  position:relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+
+  /* subtle diagonal lines for texture */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+#bookingModal.show > div {
+  transform: translateY(0);
+}
+
+/* Input styling */
+#bookingModal input[type="date"] {
+  padding:0.5rem;
+  border-radius:8px;
+  border:1px solid var(--glass-border);
+  width:100%;
+  max-width:200px;
+  background: var(--glass);
+  color: var(--muted);
+}
+
+/* Close button */
+#closeBookingModal {
+  position:absolute;
+  top:10px; right:15px;
+  font-size:1.5rem;
+  background: rgba(255,255,255,0.15);
+  border:none;
+  color: var(--text-light);
+  cursor:pointer;
+  padding:0.2rem 0.5rem;
+  border-radius:50%;
+  transition: all 0.2s ease;
+}
+
+#closeBookingModal:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.1);
+}
+
+/* Buttons row */
+.booking-actions {
+  margin-top:1.5rem;
+  display:flex;
+  gap:1rem;
+  justify-content:flex-end;
+}
+
+#bookingModal .btn {
+  font-weight:600;
+  border-radius: var(--radius);
+}
+
+#bookingModal .btn.secondary {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+#bookingModal .btn.secondary:hover {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+#bookingModal .btn {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+#bookingModal .btn:hover {
+  filter: brightness(0.9);
+}
+
+#bookingModal input[type="time"] {
+  padding:0.5rem;
+  border-radius:8px;
+  border:1px solid var(--glass-border);
+  width:100%;
+  max-width:200px;
+  margin-top:0.75rem;
+  background: var(--glass);
+  color: var(--muted);
+}
+
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  #bookingModal > div {
+    width:95%;
+    padding:1.5rem;
+  }
+
+  .booking-actions {
+    flex-direction: column;
+    gap:0.5rem;
+  }
+}
+
+  #bookingFormModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#bookingFormModal.show {
+  display: flex;
+  opacity: 1;
+}
+
+#bookingFormModal > div {
+  background: var(--card);
+  color: var(--muted);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90%;
+  overflow-y: auto;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--elev);
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+#bookingFormModal.show > div {
+  transform: translateY(0);
+}
+
+#closeBookingFormModal {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 1.8rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+#closeBookingFormModal:hover {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.dob-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--muted);
+  width: 100%;
+}
+
+textarea { resize: vertical; min-height: 60px; }
+
+.privacy label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button.btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+  #bookingSummaryModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#bookingSummaryModal.show {
+  display: flex;
+  opacity: 1;
+}
+
+#bookingSummaryModal > div {
+  background: var(--card);
+  color: var(--muted);
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--elev);
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+#bookingSummaryModal.show > div {
+  transform: translateY(0);
+}
+
+#closeBookingSummaryModal {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 1.8rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+#closeBookingSummaryModal:hover {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.1);
+}
+
+.summary-content p {
+  margin: 0.5rem 0;
+}
+
+.summary-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.summary-buttons .btn.secondary {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.summary-buttons .btn.secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
 </style>
 
+
+<!--services-->
 </section>
 
 
@@ -1178,43 +1664,6 @@ form button:hover {
 }
 </style>
 
-
-
-
-
-
-
-
-<!-- Booking modal -->
-<div id="bookingModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" tabindex="-1">
-  <div class="modal-panel" role="document">
-    <button class="close-x" id="closeModal" aria-label="Close booking modal">&times;</button>
-    <h3 id="bookingTitle">Book an appointment</h3>
-    <form id="bookingForm" onsubmit="return false">
-      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-        <input aria-label="Full name" id="bname" placeholder="Full name" required style="flex:1;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
-        <input aria-label="Phone or email" id="bcontact" placeholder="Phone or email" required style="flex:1;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
-      </div>
-      <div style="margin-top:.6rem">
-        <select id="bservice" aria-label="Service" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
-          <option>Flu Vaccine</option><option>Travel Clinic</option><option>Prescriptions</option><option>Health Check</option>
-        </select>
-      </div>
-      <div style="margin-top:.6rem;display:flex;gap:.6rem">
-        <input type="date" id="bdate" aria-label="Preferred date" required style="padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
-        <input type="time" id="btime" aria-label="Preferred time" style="padding:.6rem;border-radius:8px;border:1px solid rgba(10,20,40,0.06)">
-      </div>
-
-      <div style="margin-top:.8rem;display:flex;gap:.6rem;justify-content:flex-end">
-        <button type="button" class="btn" id="cancelBooking">Cancel</button>
-        <button type="submit" class="btn primary" id="confirmBooking">Request booking</button>
-      </div>
-
-      <div id="bookingMsg" role="status" style="display:none;margin-top:.6rem;color:var(--primary);font-weight:700">✅ Request received — we'll contact you shortly.</div>
-    </form>
-  </div>
-</div>
-
 <footer>
   <div class="container">
     <div style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
@@ -1225,6 +1674,7 @@ form button:hover {
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   /* ===== helper/query ===== */
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
@@ -1232,7 +1682,8 @@ form button:hover {
   /* ===== theme toggle (persist) ===== */
   const themeToggle = $('#themeToggle');
   const root = document.documentElement;
-  const saved = localStorage.getItem('ta-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const saved = localStorage.getItem('ta-theme') || 
+    (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   if(saved === 'dark') root.setAttribute('data-theme','dark');
   themeToggle.addEventListener('click', () => {
     const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -1241,38 +1692,56 @@ form button:hover {
   });
 
   /* ===== mobile nav toggle ===== */
-  const hambtn = $('#hambtn');
+  const hambtn = $('#mobileHambtn'); // header hamburger ID
   const navPrimary = $('.primary');
+  const mobileMenu = $('#mobileMenu');
+  const closeMobileMenu = $('#closeMobileMenu');
+
   hambtn.addEventListener('click', () => {
     const open = hambtn.getAttribute('aria-expanded') === 'true';
     hambtn.setAttribute('aria-expanded', String(!open));
-    navPrimary.style.display = open ? 'none' : 'flex';
+    mobileMenu.classList.toggle('show');
+    mobileMenu.setAttribute('aria-hidden', String(open));
+  });
+
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.remove('show');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    hambtn.setAttribute('aria-expanded', 'false');
   });
 
   /* ===== open modal / booking logic (accessible) ===== */
   const bookingModal = $('#bookingModal');
-  const openBtns = [$('#openModal'), $('#openModalBtn'), $('#openModalBtn2')].filter(Boolean);
-  openBtns.forEach(b => b.addEventListener('click', (e) => {
-    e.preventDefault();
-    openBooking();
-  }));
-  $('#closeModal').addEventListener('click', closeBooking);
-  $('#cancelBooking').addEventListener('click', closeBooking);
 
-  function openBooking(){
+  // Buttons that still open modal
+  const openModalBtns = [$('#openModal'), $('#openModalBtn')].filter(Boolean);
+
+  openModalBtns.forEach(b => b.addEventListener('click', (e) => {
+    e.preventDefault();
     bookingModal.setAttribute('open','');
     bookingModal.style.display = 'flex';
     bookingModal.querySelector('#bname').focus();
     document.body.style.overflow = 'hidden';
-  }
-  function closeBooking(){
+  }));
+
+  $('#closeModal').addEventListener('click', () => {
     bookingModal.removeAttribute('open');
     bookingModal.style.display = 'none';
     document.body.style.overflow = '';
-  }
-  /* close on Esc */
+  });
+
+  $('#cancelBooking').addEventListener('click', () => {
+    bookingModal.removeAttribute('open');
+    bookingModal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && bookingModal.style.display === 'flex') closeBooking();
+    if(e.key === 'Escape' && bookingModal.style.display === 'flex') {
+      bookingModal.removeAttribute('open');
+      bookingModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
   });
 
   /* Booking submit (mock) */
@@ -1280,13 +1749,39 @@ form button:hover {
   bookingForm.addEventListener('submit', (e) => {
     e.preventDefault();
     $('#confirmBooking').disabled = true;
-    // show confirmation UI (mock behaviour)
+    $('#bookingMsg').style.display = 'block';
     setTimeout(() => {
-      $('#bookingMsg').style.display = 'block';
-      bookingForm.style.display = 'none';
-      setTimeout(closeBooking, 1800);
-    }, 700);
+      bookingForm.reset();
+      $('#confirmBooking').disabled = false;
+      $('#bookingMsg').style.display = 'none';
+      bookingModal.removeAttribute('open');
+      bookingModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 2000);
   });
+
+  /* ===== Scroll “Book” buttons to Services ===== */
+  const servicesSection = $('#services');
+
+  // Hero button
+  const heroBookBtn = $('#openModalBtn2');
+  if(heroBookBtn && servicesSection){
+    heroBookBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Advanced Services buttons
+  const advBookBtns = $$('.scroll-book');
+  if(advBookBtns.length && servicesSection){
+    advBookBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
 
   /* ===== hero video fallback: pause on reduced-motion ===== */
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -1314,10 +1809,6 @@ form button:hover {
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 
-
-  /* ===== hero autoplay slider fallback (if multiple slides later) - placeholder ===== */
-  /* (we have single video hero — no slider required) */
-
   /* ===== scrollspy ===== */
   const sectionNodes = Array.from(document.querySelectorAll('section[id]'));
   const navLinks = Array.from(document.querySelectorAll('.nav-link'));
@@ -1332,7 +1823,8 @@ form button:hover {
   window.addEventListener('load', onScrollSpy);
 
   /* ===== set year ===== */
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const yearEl = $('#year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ===== lazy load images if IntersectionObserver available (progressive) ===== */
   if('IntersectionObserver' in window){
@@ -1349,38 +1841,336 @@ form button:hover {
     lazyImgs.forEach(img => io.observe(img));
   }
 
-
-  // ===== Advanced Services swipe (mobile only) =====
+  /* ===== Advanced Services swipe (mobile only) ===== */
   if(window.innerWidth <= 768){
     const advGrid = document.querySelector('.advanced-grid');
-    let isDown = false, startX, scrollLeft;
-
-    advGrid.addEventListener('mousedown', e => {
-      isDown = true;
-      startX = e.pageX - advGrid.offsetLeft;
-      scrollLeft = advGrid.scrollLeft;
-    });
-    advGrid.addEventListener('mouseleave', () => isDown = false);
-    advGrid.addEventListener('mouseup', () => isDown = false);
-    advGrid.addEventListener('mousemove', e => {
-      if(!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - advGrid.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      advGrid.scrollLeft = scrollLeft - walk;
-    });
-
-    // touch events
-    advGrid.addEventListener('touchstart', e => {
-      startX = e.touches[0].pageX - advGrid.offsetLeft;
-      scrollLeft = advGrid.scrollLeft;
-    });
-    advGrid.addEventListener('touchmove', e => {
-      const x = e.touches[0].pageX - advGrid.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      advGrid.scrollLeft = scrollLeft - walk;
-    });
+    if(advGrid){
+      let isDown = false, startX, scrollLeft;
+      advGrid.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - advGrid.offsetLeft;
+        scrollLeft = advGrid.scrollLeft;
+      });
+      advGrid.addEventListener('mouseleave', () => isDown = false);
+      advGrid.addEventListener('mouseup', () => isDown = false);
+      advGrid.addEventListener('mousemove', e => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - advGrid.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        advGrid.scrollLeft = scrollLeft - walk;
+      });
+      advGrid.addEventListener('touchstart', e => {
+        startX = e.touches[0].pageX - advGrid.offsetLeft;
+        scrollLeft = advGrid.scrollLeft;
+      });
+      advGrid.addEventListener('touchmove', e => {
+        const x = e.touches[0].pageX - advGrid.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        advGrid.scrollLeft = scrollLeft - walk;
+      });
+    }
   }
+
+});
+
+/* ===== Services Learn More Modal ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+const serviceDescriptions = {
+  "Private Independent Prescribing": `At Thorpe Astley Pharmacy our pharmacists are qualified independent prescriber and can assess and make clinical decisions regarding your health. With our private independent prescribing service, you are able to receive the assistance you require without the need to make an appointment with your GP. For further information do not hesitate to get in touch with us.`,
+  
+  "Emergency Hormonal Contraception": `The emergency hormonal contraceptives available at Thorpe Astley Pharmacy are for women who’ve had unprotected sex within the last five days.  The first myth that needs to be broken is the concept of ‘morning after’. Emergency hormonal contraception should be taken as early as possible after unprotected sex. The efficacy of the pill is dependent on time.
+
+Simply pop in as soon as possible to have a friendly, reassuring and confidential chat with one of our pharmacists. They’ll be able to advise you on your emergency contraceptive options, as well as offer any help or support you may need. The service and any contraceptives provided are FREE for 16–25-year-olds subject to a clinical survey.`,
+  
+  "NHS Flu Vaccinations": `A flu vaccination can help protect you from the unpleasant symptoms of the flu. The flu jab is one of the best ways of preventing illness caused by flu viruses.
+
+Book your NHS winter flu vaccination with Thorpe Astley Pharmacy  or just walk-in  today and shield yourself against influenza ready for the festive season ahead.
+
+FREE to those aged over 65 by March 2024 or with some medical  conditions. Call the pharmacy today!, there is a small fee for those who may otherwise not eligible.`,
+  
+  "Erectile Dysfunction": `Erectile dysfunction (ED), which is also known as impotence, is the inability to get or maintain an erection. It is a common condition in men in the UK and most men suffer from this condition at some point in their lifetime. It’s very common in men over 40.
+
+How does the service work?
+
+This service is private, not an NHS service. There is a cost associated with any treatment through this service. The most popular medications include Viagra, Cialis, Levitra and generic Viagra (Sildenafil).
+
+They work by allowing better blood flow to the penis, by assisting the blood vessels that act as a gateway to open and stay dilated.
+
+One of our pharmacists will go through a short questionnaire in a private consultation room to ensure that the drug is safe and suitable for you. Please visit our pharmacy or contact us to find out more.`,
+  
+  "Malaria Prevention Service": `Thorpe Astley Pharmacy can provide you and your loved ones with a choice of malaria tablets in store or online without needing to see your GP.
+
+How do I take my antimalarials?
+
+Chloroquine, Proguanil – Start one week before travel, throughout your stay in an endemic area and continue for four weeks after return.
+
+Mefloquine (Lariam) – Start two and a half weeks before travel, throughout your stay in an endemic area and continue for four weeks after return.
+
+Doxycycline – Start two days before travel, throughout your stay in an endemic area and continue for four weeks after return.
+
+Malarone – Start two days before travel, throughout your stay in an endemic area and continue for one week after return.
+
+Top tips for protecting against malaria:
+
+Use an antimalarial we have recommended
+
+Wear light, protective clothing Use an insect repellent such as deet (>30%) 
+
+Tuck your trouser legs into your socks 
+
+Use mosquito nets or window screens 
+
+Protect yourself morning, evening and night 
+
+Garlic, vitamin B, ultrasound do not work`,
+  
+  "Period Delay": `Period delay refers to when a woman chooses to delay her monthly period. The easiest way of achieving this is by taking a period delay tablet known as Norethisterone. Get in touch with Thorpe Astley Pharmacy today for further information regarding the period delay in Leicester.
+
+Why delay your period?
+
+Women delay their period for a number of reasons. You may be having an upcoming wedding or holiday and you think the periods will interfere with your plans.
+
+You may also choose to avoid experiencing discomforts and stressful moments that mark your periods; especially when you are changing your job or moving to a new house.
+
+Book or call us today to see how  our clinical pharmacist can help you`,
+  
+  "Sexual Health Services": `Sexual Health Services are accessible to everyone no matter their sex, sexual orientation, age, and ethnic origin. Contact Thorpe Astley  Pharmacy today for  Sexual Health Services in Leicester. Don’t hesitate to talk to one of our pharmacists before visiting us if you have any special needs such as a disability or if you aren’t a native English speaker. When you first pay us a visit, we may need to ask a few personal questions like your sexual and medical history, your contraception methods, and other questions pertaining to your sexual life.
+
+We provide the following Sexual Health Services:  
+– Emergency Contraception
+– Chlamydia Screening & Treatment
+– Gonorrhoea Screening & Treatment
+
+Contact our pharmacy team or book and appointment to have a private chat with one of our pharmacists`,
+  
+  "Acne Treatment": `Acne is a common skin condition affecting many people, often resulting in loss of self-confidence. Many patients already look to their local pharmacy for over-the-counter products to help relieve symptoms and fight acne. Our trained pharmacists are now able to offer you medication containing antibiotics and / or Vitamin A, usually only available via prescription. Subject to initial consultation fee.`,
+  
+  "Blood Pressure Screening": `Did you know high blood pressure (hypertension) affects 1 in 3 adults in the UK? If left untreated, it can lead to heart problems, strokes, and damage to other vital organs. Therefore, it’s crucial to be aware of the risks and how you can reduce them as much as possible. That’s where we can help, visit us at Thorpe Astley  Pharmacy in Leicester  and have your blood pressure checked.
+
+What happens during the Blood Pressure Check? A member of our trained pharmacy team will take your blood pressure in the privacy of a consultation room. Your result will be explained to you and you will be offered any advice and support needed to manage your blood pressure. If appropriate, we may refer you to your GP.`,
+  
+  "Minor Ailments": `We can supply a wide range of prescription only medicines without a prescription to help you manage common ailments.
+
+Some common minor ailments that we treat include but are not limited to:
+
+- Acid reflux
+- Alcohol reduction
+- Back pain
+- Ear infection
+- Haemorrhoids
+- IBS
+- Migraine
+- Nausea and sickness
+- Smoking cessation
+- Strep A test 'n' treat
+- Conjunctivitis
+- Urinary incontinence`
+};
+
+ // Modal elements
+  const modal = $('#serviceModal');
+  const modalTitle = $('#serviceModalTitle');
+  const modalText = $('#serviceModalText');
+  const closeBtn = $('#closeServiceModal');
+
+  // Open modal
+  function openModal(serviceName) {
+    if(!serviceName) return;
+    modalTitle.textContent = serviceName;
+    modalText.textContent = serviceDescriptions[serviceName] || "Description coming soon...";
+    modal.classList.add('show');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close modal
+  function closeModal() {
+    modal.classList.remove('show');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  // Attach event listeners to all "Learn More" buttons
+  $$('a.btn.secondary').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      // Find the nearest <li> and get its <strong> text
+      const li = btn.closest('li');
+      const serviceName = li?.querySelector('strong')?.textContent?.trim();
+      if(!serviceName) return;
+      openModal(serviceName);
+    });
+  });
+
+  // Close modal on click
+  closeBtn.addEventListener('click', closeModal);
+
+  // Close modal on background click
+  modal.addEventListener('click', e => {
+    if(e.target === modal) closeModal();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+  });
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const bookingModal = document.getElementById('bookingModal');
+  const formModal = document.getElementById('bookingFormModal');
+  const summaryModal = document.getElementById('bookingSummaryModal');
+
+  const closeBooking = document.getElementById('closeBookingModal');
+  const cancelBooking = document.getElementById('cancelBooking');
+  const confirmBookingDateTime = document.getElementById('confirmBookingDateTime');
+
+  const closeFormModal = document.getElementById('closeBookingFormModal');
+  const bookingForm = document.getElementById('bookingForm');
+
+  const closeSummaryModal = document.getElementById('closeBookingSummaryModal');
+  const editBooking = document.getElementById('editBooking');
+  const exitBooking = document.getElementById('exitBooking');
+  const confirmBookingSummary = document.getElementById('confirmBookingSummary');
+
+  let bookingData = {
+    service: '',
+    date: '',
+    time: '',
+  };
+
+  // Open booking modal when "Book" button is clicked
+  document.querySelectorAll('.btn').forEach(btn => {
+    if(btn.textContent.trim() === 'Book'){
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const li = btn.closest('li');
+        bookingData.service = li.querySelector('strong').textContent;
+
+        bookingModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+  });
+
+  // Close booking modal
+  [closeBooking, cancelBooking].forEach(el => {
+    el.addEventListener('click', () => {
+      bookingModal.classList.remove('show');
+      document.body.style.overflow = '';
+    });
+  });
+
+  bookingModal.addEventListener('click', e => {
+    if(e.target === bookingModal){
+      bookingModal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Confirm date & time → open form modal
+  confirmBookingDateTime.addEventListener('click', () => {
+    const date = document.getElementById('appointmentDate').value;
+    const time = document.getElementById('appointmentTime').value;
+
+    if(!date){
+      alert('Please select a date first!');
+      return;
+    }
+    if(!time){
+      alert('Please select a time between 10:00 and 18:00!');
+      return;
+    }
+
+    bookingData.date = date;
+    bookingData.time = time;
+
+    bookingModal.classList.remove('show');
+    formModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+
+    // Populate form readonly fields
+    document.getElementById('appointmentTimeDisplay').value = time;
+
+    // Pre-fill summary partial info
+    document.getElementById('summaryService').textContent = bookingData.service;
+    document.getElementById('summaryDate').textContent = new Date(date).toDateString();
+    document.getElementById('summaryTime').textContent = time;
+  });
+
+  // Close form modal
+  closeFormModal.addEventListener('click', () => {
+    formModal.classList.remove('show');
+    document.body.style.overflow = '';
+  });
+
+  // Handle form submit → open summary modal
+  bookingForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const dobDay = document.getElementById('dobDay').value;
+    const dobMonth = document.getElementById('dobMonth').value;
+    const dobYear = document.getElementById('dobYear').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const comments = document.getElementById('comments').value || 'None';
+
+    // Fill summary
+    document.getElementById('summaryName').textContent = `${firstName} ${lastName}`;
+    document.getElementById('summaryDOB').textContent = `${dobDay}/${dobMonth}/${dobYear}`;
+    document.getElementById('summaryEmail').textContent = email;
+    document.getElementById('summaryPhone').textContent = phone;
+    document.getElementById('summaryComments').textContent = comments;
+
+    formModal.classList.remove('show');
+    summaryModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Close summary modal
+  closeSummaryModal.addEventListener('click', () => {
+    summaryModal.classList.remove('show');
+    document.body.style.overflow = '';
+  });
+
+  // Exit summary
+  exitBooking.addEventListener('click', () => {
+    summaryModal.classList.remove('show');
+    document.body.style.overflow = '';
+  });
+
+  // Edit booking → reopen form modal
+  editBooking.addEventListener('click', () => {
+    summaryModal.classList.remove('show');
+    formModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Confirm booking → final action
+  confirmBookingSummary.addEventListener('click', () => {
+    alert(`Booking Confirmed!\nService: ${bookingData.service}\nDate: ${new Date(bookingData.date).toDateString()}\nTime: ${bookingData.time}`);
+    summaryModal.classList.remove('show');
+    document.body.style.overflow = '';
+  });
+
+  // Close modals with ESC
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){
+      [bookingModal, formModal, summaryModal].forEach(modal => modal.classList.remove('show'));
+      document.body.style.overflow = '';
+    }
+  });
+});
+
 
 </script>
 </body>
