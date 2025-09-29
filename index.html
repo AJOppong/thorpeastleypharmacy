@@ -2041,43 +2041,38 @@ Some common minor ailments that we treat include but are not limited to:
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Modal references ---
   const bookingModal = document.getElementById('bookingModal');
   const formModal = document.getElementById('bookingFormModal');
   const summaryModal = document.getElementById('bookingSummaryModal');
-
   const closeBooking = document.getElementById('closeBookingModal');
   const cancelBooking = document.getElementById('cancelBooking');
   const confirmBookingDateTime = document.getElementById('confirmBookingDateTime');
-
   const closeFormModal = document.getElementById('closeBookingFormModal');
   const bookingForm = document.getElementById('bookingForm');
-
   const closeSummaryModal = document.getElementById('closeBookingSummaryModal');
   const editBooking = document.getElementById('editBooking');
   const exitBooking = document.getElementById('exitBooking');
   const confirmBookingSummary = document.getElementById('confirmBookingSummary');
 
-  let bookingData = {
-    service: '',
-    date: '',
-    time: '',
-  };
+  const getInTouchForm = document.querySelector('#get-in-touch form');
 
-  // Open booking modal when "Book" button is clicked
+  let bookingData = { service: '', date: '', time: '' };
+
+  // --- Open booking modal ---
   document.querySelectorAll('.btn').forEach(btn => {
     if(btn.textContent.trim() === 'Book'){
       btn.addEventListener('click', e => {
         e.preventDefault();
         const li = btn.closest('li');
         bookingData.service = li.querySelector('strong').textContent;
-
         bookingModal.classList.add('show');
         document.body.style.overflow = 'hidden';
       });
     }
   });
 
-  // Close booking modal
+  // --- Close booking modal ---
   [closeBooking, cancelBooking].forEach(el => {
     el.addEventListener('click', () => {
       bookingModal.classList.remove('show');
@@ -2092,17 +2087,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Confirm date & time → open form modal
+  // --- Confirm date/time → open form modal ---
   confirmBookingDateTime.addEventListener('click', () => {
     const date = document.getElementById('appointmentDate').value;
     const time = document.getElementById('appointmentTime').value;
 
-    if(!date){
-      alert('Please select a date first!');
-      return;
-    }
-    if(!time){
-      alert('Please select a time between 10:00 and 18:00!');
+    if(!date || !time){
+      alert('Please select a valid date and time (10:00–18:00)!');
       return;
     }
 
@@ -2113,80 +2104,111 @@ document.addEventListener('DOMContentLoaded', () => {
     formModal.classList.add('show');
     document.body.style.overflow = 'hidden';
 
-    // Populate form readonly fields
     document.getElementById('appointmentTimeDisplay').value = time;
-
-    // Pre-fill summary partial info
     document.getElementById('summaryService').textContent = bookingData.service;
     document.getElementById('summaryDate').textContent = new Date(date).toDateString();
     document.getElementById('summaryTime').textContent = time;
   });
 
-  // Close form modal
+  // --- Close form modal ---
   closeFormModal.addEventListener('click', () => {
     formModal.classList.remove('show');
     document.body.style.overflow = '';
   });
 
-  // Handle form submit → open summary modal
+  // --- Submit Booking Form via AJAX ---
   bookingForm.addEventListener('submit', e => {
     e.preventDefault();
+    const formData = new FormData(bookingForm);
 
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const dobDay = document.getElementById('dobDay').value;
-    const dobMonth = document.getElementById('dobMonth').value;
-    const dobYear = document.getElementById('dobYear').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const comments = document.getElementById('comments').value || 'None';
+    fetch('https://formspree.io/f/xyznenwk', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(res => {
+      if(res.ok){
+        // Populate summary modal
+        const firstName = bookingForm.querySelector('[name="firstName"]').value;
+        const lastName = bookingForm.querySelector('[name="lastName"]').value;
+        const dob = `${bookingForm.querySelector('[name="dobDay"]').value}/${bookingForm.querySelector('[name="dobMonth"]').value}/${bookingForm.querySelector('[name="dobYear"]').value}`;
+        const email = bookingForm.querySelector('[name="_replyto"]').value;
+        const phone = bookingForm.querySelector('[name="phone"]').value;
+        const comments = bookingForm.querySelector('[name="comments"]').value || 'None';
 
-    // Fill summary
-    document.getElementById('summaryName').textContent = `${firstName} ${lastName}`;
-    document.getElementById('summaryDOB').textContent = `${dobDay}/${dobMonth}/${dobYear}`;
-    document.getElementById('summaryEmail').textContent = email;
-    document.getElementById('summaryPhone').textContent = phone;
-    document.getElementById('summaryComments').textContent = comments;
+        document.getElementById('summaryName').textContent = `${firstName} ${lastName}`;
+        document.getElementById('summaryDOB').textContent = dob;
+        document.getElementById('summaryEmail').textContent = email;
+        document.getElementById('summaryPhone').textContent = phone;
+        document.getElementById('summaryComments').textContent = comments;
 
-    formModal.classList.remove('show');
-    summaryModal.classList.add('show');
-    document.body.style.overflow = 'hidden';
+        formModal.classList.remove('show');
+        summaryModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      } else {
+        alert('Form submission failed. Please try again.');
+      }
+    })
+    .catch(() => alert('Form submission failed. Please check your connection.'));
   });
 
-  // Close summary modal
+  // --- Submit Get in Touch Form via AJAX ---
+  if(getInTouchForm){
+    getInTouchForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(getInTouchForm);
+      fetch('https://formspree.io/f/xyznenwk', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(res => {
+        if(res.ok){
+          alert('Thanks for reaching out! We will contact you soon.');
+          getInTouchForm.reset();
+        } else {
+          alert('Submission failed. Please try again.');
+        }
+      })
+      .catch(() => alert('Submission failed. Please check your connection.'));
+    });
+  }
+
+  // --- Close summary modal ---
   closeSummaryModal.addEventListener('click', () => {
     summaryModal.classList.remove('show');
     document.body.style.overflow = '';
   });
 
-  // Exit summary
   exitBooking.addEventListener('click', () => {
     summaryModal.classList.remove('show');
     document.body.style.overflow = '';
   });
 
-  // Edit booking → reopen form modal
+  // --- Edit booking ---
   editBooking.addEventListener('click', () => {
     summaryModal.classList.remove('show');
     formModal.classList.add('show');
     document.body.style.overflow = 'hidden';
   });
 
-  // Confirm booking → final action
+  // --- Final confirm (optional) ---
   confirmBookingSummary.addEventListener('click', () => {
-    alert(`Booking Confirmed!\nService: ${bookingData.service}\nDate: ${new Date(bookingData.date).toDateString()}\nTime: ${bookingData.time}`);
+    alert('Booking Confirmed! Check your email for details.');
     summaryModal.classList.remove('show');
     document.body.style.overflow = '';
+    bookingForm.reset();
   });
 
-  // Close modals with ESC
+  // --- ESC closes all modals ---
   document.addEventListener('keydown', e => {
     if(e.key === 'Escape'){
-      [bookingModal, formModal, summaryModal].forEach(modal => modal.classList.remove('show'));
+      [bookingModal, formModal, summaryModal].forEach(m => m.classList.remove('show'));
       document.body.style.overflow = '';
     }
   });
 });
+
 
 
 </script>
