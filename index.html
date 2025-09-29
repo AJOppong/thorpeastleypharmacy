@@ -10,29 +10,30 @@
   /* =======================
      Variables & base
      ======================= */
-  :root{
-    --bg: #F5F9FF;
-    --card: rgba(255,255,255,0.75);
-    --glass: rgba(255,255,255,0.35);
-    --primary: #0066CC;
-    --accent: linear-gradient(90deg,#0066CC,#00CC99);
-    --accent-solid: #00CC99;
-    --muted: #333;
-    --radius: 16px;
-    --maxw: 1280px;
-    --gap: 1.25rem;
-    --elev: 0 10px 30px rgba(10,30,60,0.08);
-    --shadow-strong: 0 12px 30px rgba(6,45,120,0.12);
-    --glass-border: rgba(255,255,255,0.6);
-    --text-light: #ffffff;
-  }
-  [data-theme="dark"]{
-    --bg:#071233;
-    --card: rgba(8,14,28,0.55);
-    --glass: rgba(255,255,255,0.03);
-    --muted:#E6EEF9;
-    --text-light:#E6EEF9;
-  }
+ :root {
+  --bg: #F5F9FF;
+  --card: rgba(255,255,255,0.75);
+  --glass: rgba(255,255,255,0.35);
+  --primary: #0066CC;
+  --accent: linear-gradient(90deg,#0066CC,#00CC99);
+  --accent-solid: #00CC99;
+  --muted: #333;
+  --text: #111;       /* dark text for light theme */
+  --radius: 16px;
+  --maxw: 1280px;
+  --gap: 1.25rem;
+  --elev: 0 10px 30px rgba(10,30,60,0.08);
+  --shadow-strong: 0 12px 30px rgba(6,45,120,0.12);
+  --glass-border: rgba(255,255,255,0.6);
+}
+
+[data-theme="dark"] {
+  --bg:#071233;
+  --card: rgba(8,14,28,0.55);
+  --glass: rgba(255,255,255,0.03);
+  --muted:#E6EEF9;
+  --text:#E6EEF9;   /* light text for dark theme */
+}
 
     /* Apply colors depending on theme */
   body {
@@ -272,6 +273,8 @@
     .testimonial{font-size:.95rem}
   }
 </style>
+
+
 </head>
 <body>
 
