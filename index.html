@@ -669,52 +669,59 @@
   </div>
 
   <!-- Booking Form Modal -->
-  <div id="bookingFormModal">
-    <div>
-      <button id="closeBookingFormModal">&times;</button>
-      <h2>Tell us your details</h2>
-      <p>We need this information to identify you</p>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" placeholder="Type Here" required>
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" placeholder="Type Here" required>
-        </div>
-        <p>Date Of Birth</p>
-        <div class="dob-group">
-          <input type="number" id="dobDay" placeholder="Day" min="1" max="31" required>
-          <input type="number" id="dobMonth" placeholder="Month" min="1" max="12" required>
-          <input type="number" id="dobYear" placeholder="Year" min="1900" max="2025" required>
-        </div>
-        <p>Your contact details</p>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="Type Here" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Mobile Phone</label>
-          <input type="tel" id="phone" placeholder="Type Here" required>
-        </div>
-        <p>Extra info</p>
-        <div class="form-group">
-          <label for="appointmentTimeDisplay">Time</label>
-          <input type="text" id="appointmentTimeDisplay" readonly>
-        </div>
-        <div class="form-group">
-          <label for="comments">Comments (optional)</label>
-          <textarea id="comments" placeholder="Type Here"></textarea>
-        </div>
-        <div class="form-group privacy">
-          <label><input type="checkbox" required> I accept the privacy policy</label>
-          <label><input type="checkbox"> I would like to receive marketing messages</label>
-        </div>
-        <button type="submit" class="btn">Complete Booking</button>
-      </form>
-    </div>
+<div id="bookingFormModal">
+  <div class="contact-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 max-w-md w-full flex flex-col items-center">
+    <button id="closeBookingFormModal" style="align-self:flex-end;font-size:1.5rem;background:none;border:none;color:var(--muted);cursor:pointer">&times;</button>
+
+    <h2 class="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-white">Tell us your details</h2>
+    <p class="text-gray-600 dark:text-gray-300 text-center mb-4">We need this information to identify you</p>
+
+    <!-- Unified Booking Form -->
+    <form action="https://formspree.io/f/xyznenwk" method="POST" id="bookingForm" class="w-full flex flex-col space-y-4">
+      <!-- Name -->
+      <div class="form-group flex gap-2">
+        <input type="text" name="firstName" placeholder="First Name" required
+               class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white flex-1">
+        <input type="text" name="lastName" placeholder="Last Name" required
+               class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white flex-1">
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="dob-group flex gap-2">
+        <input type="number" name="dobDay" placeholder="Day" min="1" max="31" required
+               class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white flex-1">
+        <input type="number" name="dobMonth" placeholder="Month" min="1" max="12" required
+               class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white flex-1">
+        <input type="number" name="dobYear" placeholder="Year" min="1900" max="2025" required
+               class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white flex-1">
+      </div>
+
+      <!-- Contact Info -->
+      <input type="email" name="_replyto" placeholder="Email Address" required
+             class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+      <input type="tel" name="phone" placeholder="Mobile Phone" required
+             class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+
+      <!-- Appointment & Comments -->
+      <input type="text" name="appointmentTimeDisplay" placeholder="Selected Time" readonly
+             class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+      <textarea name="comments" placeholder="Comments (optional)"
+                class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+
+      <!-- Privacy / Marketing -->
+      <div class="flex flex-col gap-2 text-gray-600 dark:text-gray-300">
+        <label><input type="checkbox" name="privacy" required> I accept the privacy policy</label>
+        <label><input type="checkbox" name="marketing"> I would like to receive marketing messages</label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn primary w-full py-3 rounded-lg font-bold text-white bg-blue-600 hover:bg-blue-700 transition">
+        Complete Booking
+      </button>
+    </form>
   </div>
+</div>
+
 
   <!-- Booking Summary Modal -->
   <div id="bookingSummaryModal">
@@ -1558,7 +1565,7 @@ button.btn {
 </section>
 
 <!-- Get in Touch Section -->
-<section id="get-in-touch" class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
+<section id="get-in-touch" class="min-h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-900">
 
   <!-- Contact Card -->
   <div class="contact-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-10 max-w-md w-full flex flex-col items-center">
@@ -1574,16 +1581,23 @@ button.btn {
     </p>
 
     <!-- Contact Form -->
-    <form class="w-full flex flex-col space-y-6">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="tel" name="phone" placeholder="Phone" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" rows="5" placeholder="Message" required></textarea>
-      <button type="submit">Submit</button>
+    <form action="https://formspree.io/f/xyznenwk" method="POST" class="w-full flex flex-col space-y-6">
+      <input type="text" name="name" placeholder="Name" required
+             class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+      <input type="tel" name="phone" placeholder="Phone" required
+             class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+      <input type="email" name="_replyto" placeholder="Email" required
+             class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+      <textarea name="message" rows="5" placeholder="Message" required
+                class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+      <button type="submit" class="btn primary w-full py-3 rounded-lg font-bold text-white bg-blue-600 hover:bg-blue-700 transition">
+        Submit
+      </button>
     </form>
 
   </div>
 </section>
+
 
 <style>
 /* Card Styling */
